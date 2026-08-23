@@ -21,7 +21,7 @@ var CLAW_ROBOTS = [
   { chassis: 'sonnet', state: 'running', p: 2, a: 0.9, sp: 0.11, title: 'write release notes' },
   { chassis: 'haiku', state: 'out_of_fuel', p: 2, a: 3.8, sp: 0.045, title: 'context window full' },
   { chassis: 'haiku', state: 'running', p: 3, a: 2.0, sp: 0.12, title: 'fix the sitemap' },
-  { chassis: 'fable', state: 'needs_input', p: 3, a: 5.0, sp: 0.05, title: 'pricing page, pick a plan' },
+  { chassis: 'fable', state: 'idle', p: 3, a: 5.0, sp: 0.05, title: 'pricing page, draft ready' },
 ]
 
 class FleetDemo {
@@ -85,6 +85,22 @@ class FleetDemo {
     g.beginPath()
     g.arc(x, y, (30 + q * 85) * z, 0, Math.PI * 2)
     g.stroke()
+    g.restore()
+  }
+
+  idleGlow(g, x, y, z) {
+    // An answer just landed: a faint steady halo, no pulse and no ping —
+    // mirrors FleetCanvas.vue's idle treatment.
+    var rr = 50 * z
+    var grad = g.createRadialGradient(x, y, 0, x, y, rr)
+    grad.addColorStop(0, 'rgba(255,215,94,0.45)')
+    grad.addColorStop(1, 'rgba(0,0,0,0)')
+    g.save()
+    g.globalAlpha = 0.14
+    g.fillStyle = grad
+    g.beginPath()
+    g.arc(x, y, rr, 0, Math.PI * 2)
+    g.fill()
     g.restore()
   }
 
@@ -206,6 +222,7 @@ class FleetDemo {
       var pos = this.robotPos(r, t)
       var s = W2S(pos.x, pos.y)
       if (r.state === 'error') this.redGlow(g, s[0], s[1], z)
+      if (r.state === 'idle') this.idleGlow(g, s[0], s[1], z)
       if (r.state === 'needs_input') this.halo(g, s[0], s[1], z, t, i)
       var phase = ((t * 0.03) + i * 0.37) % 1
       var anim = CD.animForState(r.state, phase)
@@ -278,6 +295,7 @@ class FleetDemo {
     var defs = [
       ['card-running', 'sonnet', 'work'],
       ['card-attn', 'haiku', 'wave'],
+      ['card-idle', 'fable', 'rest'],
       ['card-sleep', 'opus', 'sleep'],
       ['card-fuel', 'haiku', 'drift'],
       ['card-error', 'sonnet', 'error'],
@@ -287,6 +305,7 @@ class FleetDemo {
       if (!c) continue
       c.g.clearRect(0, 0, c.w, c.h)
       if (defs[i][2] === 'wave') this.halo(c.g, c.w / 2, c.h / 2 + 4, 1.4, t, i)
+      if (defs[i][2] === 'rest') this.idleGlow(c.g, c.w / 2, c.h / 2 + 4, 1.4)
       this.sprite(c.g, c.dpr, defs[i][1], defs[i][2], c.w / 2, c.h / 2 + 4, 96, t + i * 0.9)
     }
   }

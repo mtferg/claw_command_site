@@ -109,7 +109,8 @@
       <div class="hud">
         <span class="hud-title">LIVE FLEET</span>
         <span class="hud-stat"><i class="dot dot-green"></i>5 <span class="k">Running</span></span>
-        <span class="hud-stat"><i class="dot dot-amber"></i>2 <span class="k">Needs input</span></span>
+        <span class="hud-stat"><i class="dot dot-amber"></i>1 <span class="k">Needs input</span></span>
+        <span class="hud-stat"><i class="dot dot-idle"></i>1 <span class="k">Idle</span></span>
         <span class="hud-stat"><i class="dot dot-blue"></i>1 <span class="k">Sleeping</span></span>
         <span class="hud-stat"><i class="dot dot-grey"></i>1 <span class="k">Out of fuel</span></span>
         <span class="hud-stat"><i class="dot dot-red"></i>1 <span class="k">Error</span></span>
@@ -159,6 +160,11 @@
           <canvas id="card-attn"></canvas>
           <p class="card-label amber">● NEEDS INPUT</p>
           <p class="card-sub">waving, and allowed to be loud</p>
+        </div>
+        <div class="card">
+          <canvas id="card-idle"></canvas>
+          <p class="card-label idle">● IDLE</p>
+          <p class="card-sub">turn ended, worth a glance</p>
         </div>
         <div class="card">
           <canvas id="card-sleep"></canvas>
@@ -245,10 +251,10 @@
           <span class="on">Waiting</span>
           <span>Cost</span>
           <span>Title</span>
-          <span class="count">7 / 23</span>
+          <span class="count">6 / 23</span>
         </div>
         <div class="deck-list">
-          <div class="deck-group amber"><i class="dot-amber dot"></i>Needs input<span class="n">2</span></div>
+          <div class="deck-group amber"><i class="dot-amber dot"></i>Needs input<span class="n">1</span></div>
           <div class="deck-row selected">
             <i class="led amber"></i>
             <canvas class="ci" data-ch="haiku" data-anim="wave"></canvas>
@@ -258,12 +264,13 @@
             </div>
             <div class="row-figs"><span class="ago long">4m</span><span>$0.84</span></div>
           </div>
+          <div class="deck-group idle"><i class="dot-idle dot"></i>Idle<span class="n">1</span></div>
           <div class="deck-row">
-            <i class="led amber"></i>
-            <canvas class="ci" data-ch="fable" data-anim="wave"></canvas>
+            <i class="led idle"></i>
+            <canvas class="ci" data-ch="fable" data-anim="rest"></canvas>
             <div class="row-main">
               <div class="row-title">auth refactor, phase 2</div>
-              <div class="row-sub"><span>claw-command ⎇ main</span><span class="row-prompt">Pick a session store</span></div>
+              <div class="row-sub"><span>claw-command ⎇ main</span><span class="row-prompt idle">posted the phase 2 plan</span></div>
             </div>
             <div class="row-figs"><span class="ago">32s</span><span>$2.10</span></div>
           </div>
@@ -374,6 +381,7 @@
       <span class="footer-dots">
         <i class="dot-green dot"></i>
         <i class="dot-amber dot"></i>
+        <i class="dot-idle dot"></i>
         <i class="dot-blue dot"></i>
         <i class="dot-grey dot"></i>
         <i class="dot-red dot"></i>
