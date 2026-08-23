@@ -19,6 +19,7 @@ var CLAW_ROBOTS = [
   { chassis: 'sonnet', state: 'sleeping', p: 1, a: 3.3, sp: 0.06, title: 'retro summary, done' },
   { chassis: 'haiku', state: 'error', p: 1, a: 5.2, sp: 0.09, title: 'hit an API error' },
   { chassis: 'sonnet', state: 'running', p: 2, a: 0.9, sp: 0.11, title: 'write release notes' },
+  { chassis: 'sonnet', state: 'needs_input', p: 2, a: 2.4, sp: 0.06, title: 'release notes need a review' },
   { chassis: 'haiku', state: 'out_of_fuel', p: 2, a: 3.8, sp: 0.045, title: 'context window full' },
   { chassis: 'haiku', state: 'running', p: 3, a: 2.0, sp: 0.12, title: 'fix the sitemap' },
   { chassis: 'fable', state: 'idle', p: 3, a: 5.0, sp: 0.05, title: 'pricing page, draft ready' },
@@ -269,6 +270,17 @@ class FleetDemo {
       var cr = crew[i]
       var a = cr.a + t * cr.sp
       this.sprite(g, c.dpr, cr.chassis, cr.anim, px + Math.cos(a) * 132, py + Math.sin(a) * 118, 48, t + i)
+    }
+
+    // Archived agents circling the drain, dim and near-still.
+    var gone = [
+      { chassis: 'sonnet', a: 0.7, rad: 118, sp: 0.045 },
+      { chassis: 'haiku', a: 3.6, rad: 134, sp: 0.035 },
+    ]
+    for (var i = 0; i < gone.length; i++) {
+      var an = gone[i]
+      var aa = an.a + t * an.sp
+      this.sprite(g, c.dpr, an.chassis, 'archived', hx + Math.cos(aa) * an.rad, hy + Math.sin(aa) * an.rad * 0.5, 40, t + i * 1.7)
     }
 
     // The ghost held at the event horizon, mid-drag, waiting on the dialog.
