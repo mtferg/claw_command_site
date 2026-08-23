@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claw Command: Mission Control for Your Claude Code Fleet</title>
+  <meta name="description" content="A $3.99 macOS app that turns your Claude Code sessions into a cozy galaxy. Group agents by project, catch the ones that need you, drive it all by keyboard.">
+  <link rel="canonical" href="https://mtferg.github.io/claw_command_site/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Claw Command: Mission Control for Your Claude Code Fleet">
+  <meta property="og:description" content="Agent orchestration meets cozy gaming. $3.99, one time, local only.">
+  <meta property="og:url" content="https://mtferg.github.io/claw_command_site/">
+  <!-- TODO: add og.png (1200x630, a real fleet screenshot with an amber robot waving) then uncomment:
+  <meta property="og:image" content="https://mtferg.github.io/claw_command_site/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./assets/site.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Claw Command",
+    "operatingSystem": "macOS",
+    "applicationCategory": "DeveloperApplication",
+    "description": "A macOS desktop app that shows every Claude Code session on your machine as a robot orbiting its project's planet. A live fleet view for agent orchestration with amber alerts and full keyboard control.",
+    "offers": { "@type": "Offer", "price": "3.99", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Claw Command?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A macOS desktop app that shows every Claude Code session on your machine as a robot orbiting its project's planet. It is a live fleet view for agent orchestration: grouping by project, amber alerts when an agent needs input, and full keyboard control." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it a game?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It plays like one. Pixel robots, hand-painted planets, a black hole for the archive. But the fleet is real: every robot is one of your live Claude Code sessions, and the amber ones really do need you." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with my existing Claude Code sessions?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. It reads the session transcripts Claude Code already writes to ~/.claude. Sessions from the last 24 hours appear automatically, grouped by project, with worktrees shown as repo and branch. No setup beyond installing the app." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it need an API key or an account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no login, no API key, and no server. Claw Command runs as a single local process and your data stays on your machine." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can it control my agents?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It orchestrates around them. You can jump into any session in the Claude app, regroup robots between planets, and archive the finished ones. It never types into your sessions and never edits your code." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which platforms does it run on?",
+        "acceptedAnswer": { "@type": "Answer", "text": "macOS today, as a desktop app." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "$3.99, one time. Every future update is included." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-brand">CLAW COMMAND<span class="nav-tag">v1</span></div>
+    <div class="nav-links">
+      <a class="nav-link" href="#planets">Planets</a>
+      <a class="nav-link" href="#attention">Attention</a>
+      <a class="nav-link" href="#keyboard">Keyboard</a>
+      <a class="nav-link" href="#deck">Deck</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="nav-cta" href="#pricing">Get it · $3.99</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Agent orchestration meets cozy gaming</p>
+      <h1>Mission control for your Claude Code fleet.</h1>
+      <p class="hero-sub">Every session is a little robot. Every project is a planet. Claw Command turns a terminal full of agents into a calm, glanceable galaxy, and waves at you the moment one of them needs a human.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#pricing">Download for macOS · $3.99</a>
+        <a class="btn-ghost" href="#keyboard">See every key</a>
+      </div>
+      <p class="hero-note">One time. No account. Runs entirely on your machine.</p>
+    </div>
+  </header>
+
+  <section class="demo-section">
+    <div id="demo-wrap" class="pane wrap" tabindex="0">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="hud">
+        <span class="hud-title">LIVE FLEET</span>
+        <span class="hud-stat"><i class="dot dot-green"></i>5 <span class="k">Running</span></span>
+        <span class="hud-stat"><i class="dot dot-amber"></i>2 <span class="k">Needs input</span></span>
+        <span class="hud-stat"><i class="dot dot-blue"></i>1 <span class="k">Sleeping</span></span>
+        <span class="hud-stat"><i class="dot dot-grey"></i>1 <span class="k">Out of fuel</span></span>
+        <span class="hud-stat"><i class="dot dot-red"></i>1 <span class="k">Error</span></span>
+        <span class="hud-figs"><span><span class="k">Today</span> $12.40</span><span><span class="k">Active</span> 3h 24m</span><span><span class="k">Tokens</span> 8.2M</span></span>
+      </div>
+      <canvas id="demo-canvas"></canvas>
+      <div class="demo-hints">
+        <span>This is the real renderer, not a video.</span>
+        <span><kbd>N</kbd> fly to the robot waiting on you</span>
+        <span>click a planet to visit</span>
+        <span><kbd>Esc</kbd> backs out</span>
+        <span id="demo-status">fleet view</span>
+        <button id="demo-btn-n" type="button" class="hint-btn amber">N · next attention</button>
+        <button id="demo-btn-esc" type="button" class="hint-btn">Esc · fleet view</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="planets" class="section">
+    <div class="wrap">
+      <p class="kicker">Grouping</p>
+      <h2>Every project is a planet.</h2>
+      <p class="section-copy">Repos become planets, and worktrees fly under their own flag as repo ⎇ branch. Robots orbit the project they belong to, so one glance tells you what each crew of agents is up to. Drag a robot to another planet to regroup it. Drop one in open space and it gets a planet of its own. Drag one into the black hole to archive it, and yes, it asks first.</p>
+      <div class="pane">
+        <canvas id="orbits-canvas"></canvas>
+        <div class="chips">
+          <span class="chip">drag between planets to regroup</span>
+          <span class="chip">drop in open space for a new planet</span>
+          <span class="chip red">black hole archives, it asks first</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="attention" class="section">
+    <div class="wrap">
+      <p class="kicker kicker-amber">Alerting</p>
+      <h2>Amber means you.</h2>
+      <p class="section-copy">Motion is spent on exactly one job: showing which robot needs a human. A waving robot is the only big, fast thing in a field of small, slow ones. In the app, 68% of all on-screen motion belongs to the agents waiting on you. Errors smoke quietly, sleepers snooze, and the fleet stays calm enough to live on a second monitor all day. Press <kbd>N</kbd> and the camera flies to whoever has waited longest.</p>
+      <div class="cards">
+        <div class="card">
+          <canvas id="card-running"></canvas>
+          <p class="card-label green">● RUNNING</p>
+          <p class="card-sub">busy, and quiet on purpose</p>
+        </div>
+        <div class="card amber">
+          <canvas id="card-attn"></canvas>
+          <p class="card-label amber">● NEEDS INPUT</p>
+          <p class="card-sub">waving, and allowed to be loud</p>
+        </div>
+        <div class="card">
+          <canvas id="card-sleep"></canvas>
+          <p class="card-label blue">● SLEEPING</p>
+          <p class="card-sub">done, waiting to be read</p>
+        </div>
+        <div class="card">
+          <canvas id="card-fuel"></canvas>
+          <p class="card-label grey">● OUT OF FUEL</p>
+          <p class="card-sub">context full, costs nothing</p>
+        </div>
+        <div class="card">
+          <canvas id="card-error"></canvas>
+          <p class="card-label red">● ERROR</p>
+          <p class="card-sub">smoking, but never outshouts amber</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keyboard" class="section">
+    <div class="wrap keyboard-grid">
+      <div>
+        <p class="kicker">Control</p>
+        <h2>Hands never leave the keyboard.</h2>
+        <p class="section-copy">The whole fleet drives from the keys: triage the list, fly the camera, walk planet to planet, regroup robots, archive the finished ones. Press <kbd>?</kbd> in the app and this exact card pops up.</p>
+      </div>
+      <div class="helpcard">
+        <div class="helpcard-head">KEYBOARD<span class="x">×</span></div>
+        <div class="helpcard-cols">
+          <div>
+            <h3>Attention</h3>
+            <dl>
+              <dt><kbd>N</kbd></dt><dd>next robot that needs you</dd>
+              <dt><kbd>⇧N</kbd></dt><dd>previous one</dd>
+              <dt><kbd>O</kbd></dt><dd>open the selected session in Claude</dd>
+              <dt><kbd>T</kbd></dt><dd>read its transcript</dd>
+            </dl>
+            <h3>Fleet</h3>
+            <dl>
+              <dt><kbd>↑ ↓ / J K</kbd></dt><dd>walk the list</dd>
+              <dt><kbd>↵</kbd></dt><dd>fly to the selection</dd>
+              <dt><kbd>[ ]</kbd></dt><dd>previous / next planet</dd>
+              <dt><kbd>{ }</kbd></dt><dd>move the selection between planets</dd>
+              <dt><kbd>X</kbd></dt><dd>archive the selection (asks first)</dd>
+              <dt><kbd>Esc</kbd></dt><dd>back out, one layer at a time</dd>
+            </dl>
+          </div>
+          <div>
+            <h3>Planets</h3>
+            <dl>
+              <dt><kbd>⌘P</kbd></dt><dd>new planet</dd>
+              <dt><kbd>⌘⇧P</kbd></dt><dd>edit the planet in context</dd>
+              <dt><kbd>⌘N</kbd></dt><dd>new robot, a new session in a folder</dd>
+              <dt><kbd>drag</kbd></dt><dd>park a planet where you want it</dd>
+            </dl>
+            <h3>Deck</h3>
+            <dl>
+              <dt><kbd>/</kbd></dt><dd>filter</dd>
+              <dt><kbd>1 2 3</kbd></dt><dd>agents · usage · sources</dd>
+              <dt><kbd>D</kbd></dt><dd>show / hide the deck</dd>
+              <dt><kbd>E</kbd></dt><dd>full console</dd>
+              <dt><kbd>?</kbd></dt><dd>this card</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deck" class="section">
+    <div class="wrap deck-grid">
+      <div>
+        <p class="kicker">Triage</p>
+        <h2>A map for the feel. A list for the work.</h2>
+        <p class="section-copy">The command deck is the same fleet, the boring way. Grouped by state with needs input pinned to the top, sortable by waiting time, cost, or title, filterable by text, chassis, and planet. A full triage pass never has to touch the map. Each row shows what the robot is stuck on, how long it has waited, and what it has cost so far.</p>
+        <p class="section-copy">The wait clock turns amber past thirty seconds, because half a minute of a human bottleneck is long enough to notice.</p>
+      </div>
+      <div class="pane deck">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="deck-head">Agents<span class="hint">↑↓ walk · ↵ fly</span></div>
+        <div class="deck-search"><div>filter…</div></div>
+        <div class="deck-sorts">
+          <span class="on">Waiting</span>
+          <span>Cost</span>
+          <span>Title</span>
+          <span class="count">7 / 23</span>
+        </div>
+        <div class="deck-list">
+          <div class="deck-group amber"><i class="dot-amber dot"></i>Needs input<span class="n">2</span></div>
+          <div class="deck-row selected">
+            <i class="led amber"></i>
+            <canvas class="ci" data-ch="haiku" data-anim="wave"></canvas>
+            <div class="row-main">
+              <div class="row-title">ship the pricing page</div>
+              <div class="row-sub"><span>aftertaste</span><span class="row-prompt">OK to run the migration?</span></div>
+            </div>
+            <div class="row-figs"><span class="ago long">4m</span><span>$0.84</span></div>
+          </div>
+          <div class="deck-row">
+            <i class="led amber"></i>
+            <canvas class="ci" data-ch="fable" data-anim="wave"></canvas>
+            <div class="row-main">
+              <div class="row-title">auth refactor, phase 2</div>
+              <div class="row-sub"><span>claw-command ⎇ main</span><span class="row-prompt">Pick a session store</span></div>
+            </div>
+            <div class="row-figs"><span class="ago">32s</span><span>$2.10</span></div>
+          </div>
+          <div class="deck-group"><i class="dot-green dot"></i>Running<span class="n">3</span></div>
+          <div class="deck-row">
+            <i class="led green"></i>
+            <canvas class="ci" data-ch="opus" data-anim="work"></canvas>
+            <div class="row-main">
+              <div class="row-title">coordinate: split the PR</div>
+              <div class="row-sub"><span>claw-command ⎇ main</span></div>
+            </div>
+            <div class="row-figs"><span class="ago">11m</span><span>$4.62</span></div>
+          </div>
+          <div class="deck-row moon">
+            <i class="led green"></i>
+            <canvas class="ci" data-ch="sonnet" data-anim="work"></canvas>
+            <div class="row-main">
+              <div class="row-title">write the release notes</div>
+              <div class="row-sub"><span>moon of the coordinator</span></div>
+            </div>
+            <div class="row-figs"><span class="ago">2m</span><span>$0.31</span></div>
+          </div>
+          <div class="deck-row">
+            <i class="led green"></i>
+            <canvas class="ci" data-ch="haiku" data-anim="work"></canvas>
+            <div class="row-main">
+              <div class="row-title">sweep dead feature flags</div>
+              <div class="row-sub"><span>side-quests</span></div>
+            </div>
+            <div class="row-figs"><span class="ago">58s</span><span>$0.09</span></div>
+          </div>
+          <div class="deck-group"><i class="dot-blue dot"></i>Sleeping<span class="n">1</span></div>
+          <div class="deck-row">
+            <i class="led blue"></i>
+            <canvas class="ci" data-ch="sonnet" data-anim="sleep"></canvas>
+            <div class="row-main">
+              <div class="row-title">yesterday's retro summary</div>
+              <div class="row-sub"><span>aftertaste</span></div>
+            </div>
+            <div class="row-figs"><span class="ago">3h</span><span>$1.27</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="local" class="section">
+    <div class="wrap">
+      <p class="kicker">Private by shape</p>
+      <h2>Runs on your machine. Phones nobody.</h2>
+      <div class="local-grid">
+        <div class="local-card">
+          <h3>Your sessions</h3>
+          <p>Reads the transcripts Claude Code already writes to <span class="path">~/.claude</span>, every five seconds. Sessions from the last 24 hours appear on their planets by themselves. Nothing to configure.</p>
+        </div>
+        <div class="local-card">
+          <h3>No account</h3>
+          <p>No API key, no login, no backend service. One process on your Mac. Your prompts and code never leave the machine.</p>
+        </div>
+        <div class="local-card">
+          <h3>Observes, mostly</h3>
+          <p>Jump into any session in the Claude app with <kbd>O</kbd>. Regroup and archive from the map. It never types into your sessions and never edits your code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-section">
+    <div class="pane pricing">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <p class="kicker">Pricing</p>
+      <p class="price">$3.99</p>
+      <p class="price-sub">ONCE. THAT'S THE WHOLE TABLE.</p>
+      <p class="blurb">Less than the tokens your fleet burned while you read this page. No subscription, no seats, no tiers. Buy it, download it, fly.</p>
+      <a class="btn-primary" href="#pricing">Buy Claw Command · $3.99</a>
+      <p class="ph-wrap"><span class="ph">[PAYMENT LINK GOES HERE]</span></p>
+      <p class="fine">Checkout unlocks the macOS download. Every future update included.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <div class="wrap faq">
+      <p class="kicker">FAQ</p>
+      <h2>Questions, answered.</h2>
+      <dl>
+        <dt>What is Claw Command?</dt>
+        <dd>A macOS desktop app that shows every Claude Code session on your machine as a robot orbiting its project's planet. It is a live fleet view for agent orchestration: grouping by project, amber alerts when an agent needs input, and full keyboard control.</dd>
+        <dt>Is it a game?</dt>
+        <dd>It plays like one. Pixel robots, hand-painted planets, a black hole for the archive. But the fleet is real: every robot is one of your live Claude Code sessions, and the amber ones really do need you.</dd>
+        <dt>Does it work with my existing Claude Code sessions?</dt>
+        <dd>Yes. It reads the session transcripts Claude Code already writes to ~/.claude. Sessions from the last 24 hours appear automatically, grouped by project, with worktrees shown as repo ⎇ branch. No setup beyond installing the app.</dd>
+        <dt>Does it need an API key or an account?</dt>
+        <dd>No. There is no login, no API key, and no server. Claw Command runs as a single local process and your data stays on your machine.</dd>
+        <dt>Can it control my agents?</dt>
+        <dd>It orchestrates around them. You can jump into any session in the Claude app, regroup robots between planets, and archive the finished ones. It never types into your sessions and never edits your code.</dd>
+        <dt>Which platforms does it run on?</dt>
+        <dd>macOS today, as a desktop app. <span class="ph">[WINDOWS / LINUX PLANS]</span></dd>
+        <dt>How much does it cost?</dt>
+        <dd>$3.99, one time. Every future update is included.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span class="footer-brand">CLAW COMMAND</span>
+      <span>built for people who run too many agents at once</span>
+      <span class="footer-dots">
+        <i class="dot-green dot"></i>
+        <i class="dot-amber dot"></i>
+        <i class="dot-blue dot"></i>
+        <i class="dot-grey dot"></i>
+        <i class="dot-red dot"></i>
+      </span>
+    </div>
+  </footer>
+
+  <script src="./assets/claw-demo.js" defer></script>
+  <script src="./assets/fleet.js" defer></script>
+</body>
+</html>
