@@ -6,7 +6,7 @@
 
 var CLAW_PLANETS = [
   { style: 0, x: -380, y: -70, r: 46, orbitR: 96, label: 'claw-command ⎇ main' },
-  { style: 3, x: 320, y: -170, r: 50, orbitR: 104, label: 'aftertaste' },
+  { style: 3, x: 320, y: -170, r: 50, orbitR: 104, label: 'webapp' },
   { style: 1, x: 270, y: 215, r: 42, orbitR: 88, label: 'side-quests' },
   { style: 2, x: -210, y: 255, r: 38, orbitR: 80, label: 'docs-site' },
 ]
@@ -285,8 +285,8 @@ class FleetDemo {
     g.font = '11px "JetBrains Mono", monospace'
     g.textAlign = 'center'
     g.fillStyle = 'rgba(200,210,238,0.45)'
-    g.fillText('aftertaste', px, py + 108)
-    g.fillText('archive? it asks first', hx, hy + 116)
+    g.fillText('webapp', px, py + 108)
+    g.fillText('black hole (archive agents here)', hx, hy + 116)
   }
 
   /* ── state cards and deck icons ──────────────────────────────────────── */
