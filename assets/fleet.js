@@ -322,6 +322,37 @@ class FleetDemo {
     }
   }
 
+  drawRoster(t) {
+    // Each chassis cycles through its animations, staggered so the state
+    // change ripples across the row, with a short crossfade at each switch.
+    var CYCLE = ['work', 'wave', 'idle', 'sleep']
+    var HOLD = 3.2, FADE = 0.5
+    var els = document.querySelectorAll('canvas.rc')
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i]
+      if (!el.id) el.id = 'rc-' + i
+      var c = this.ctx(el.id)
+      if (!c) continue
+      c.g.clearRect(0, 0, c.w, c.h)
+      var tt = t + i * HOLD * 0.65
+      var idx = Math.floor(tt / HOLD)
+      var ph = tt - idx * HOLD
+      var cur = CYCLE[idx % CYCLE.length]
+      var nxt = CYCLE[(idx + 1) % CYCLE.length]
+      var x = c.w / 2
+      var y = c.h / 2 + 2 + Math.sin(t * 1.4 + i * 1.2) * 1.5
+      var size = Math.min(c.w, c.h)
+      var ch = el.dataset.ch || 'haiku'
+      if (ph > HOLD - FADE) {
+        var m = (ph - (HOLD - FADE)) / FADE
+        this.sprite(c.g, c.dpr, ch, cur, x, y, size, t + i * 0.7, 1 - m)
+        this.sprite(c.g, c.dpr, ch, nxt, x, y, size, t + i * 0.7, m)
+      } else {
+        this.sprite(c.g, c.dpr, ch, cur, x, y, size, t + i * 0.7)
+      }
+    }
+  }
+
   drawIcons(t) {
     var els = document.querySelectorAll('canvas.ci')
     for (var i = 0; i < els.length; i++) {
@@ -339,6 +370,7 @@ class FleetDemo {
     this.drawHero(t)
     this.drawOrbits(t)
     this.drawCards(t)
+    this.drawRoster(t)
     this.drawIcons(t)
   }
 

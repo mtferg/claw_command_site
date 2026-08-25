@@ -208,6 +208,21 @@ a.btn-ghost:hover { border-color: var(--accent); }
 .hint-btn.amber { border-color: rgba(255, 176, 32, 0.5); color: var(--amber); }
 .hint-btn.amber:hover { border-color: var(--amber); }
 
+/* ── model roster ────────────────────────────────────────────────────────── */
+
+.roster-section { padding: 0 32px 8px; }
+.roster { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px clamp(24px, 6vw, 88px); }
+.roster-figure { text-align: center; }
+.roster-figure canvas { display: block; width: 96px; height: 96px; margin: 0 auto; }
+.roster-label { margin: 0; font: 600 11px var(--mono); letter-spacing: 0.18em; }
+.roster-label.fable { color: #8878d4; }
+.roster-label.opus { color: #8b7fd8; }
+.roster-label.sonnet { color: #5fbdb4; }
+.roster-label.haiku { color: #e29c58; }
+@media (max-width: 560px) {
+  .roster { display: grid; grid-template-columns: repeat(2, auto); gap: 20px 48px; }
+}
+
 /* ── sections ────────────────────────────────────────────────────────────── */
 
 .section { padding: 72px 32px; }
@@ -374,6 +389,28 @@ a.btn-ghost:hover { border-color: var(--accent); }
 }
 .faq dd { margin: 8px 0 0; font: 15px/1.65 var(--sans); color: var(--text-body); }
 
+/* ── legal pages ─────────────────────────────────────────────────────────── */
+
+.legal { max-width: 760px; padding: 72px 32px 96px; }
+.legal h1 { margin: 6px 0 4px; font-size: 32px; }
+.legal h2 { margin: 40px 0 10px; font-size: 15px; letter-spacing: 0.04em; color: var(--accent); }
+.legal p { margin: 0 0 14px; font: 15px/1.7 var(--sans); color: var(--text-body); }
+.legal code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(200, 210, 238, 0.08);
+  font: 13px var(--mono);
+  color: var(--text);
+}
+.legal-meta { font: 12px/1 var(--mono); color: var(--text-dim); }
+.legal-disclaimer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
 /* footer */
 .footer { padding: 28px 32px 40px; border-top: 1px solid var(--line); }
 .footer .wrap {
@@ -385,6 +422,14 @@ a.btn-ghost:hover { border-color: var(--accent); }
   white-space: nowrap;
 }
 .footer-brand { letter-spacing: 0.16em; font-weight: 600; color: var(--text); }
+.footer-links a { color: var(--text-dim); }
+.footer-links a:hover { color: var(--accent); }
+.footer-legal {
+  margin: 14px auto 0;
+  max-width: 1120px;
+  font: 11px/1.6 var(--mono);
+  color: var(--text-dim);
+}
 .footer-dots { margin-left: auto; display: flex; gap: 8px; align-items: center; }
 .footer-dots i { width: 6px; height: 6px; border-radius: 50%; }
 

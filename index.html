@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Claw Command: Mission Control for Your Claude Code Fleet</title>
   <meta name="description" content="A $3.99 macOS app that turns your Claude Code sessions into a cozy galaxy. Group agents by project, catch the ones that need you, drive it all by keyboard.">
-  <link rel="canonical" href="https://mtferg.github.io/claw_command_site/">
+  <link rel="canonical" href="https://clawcommand.space/">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Claw Command: Mission Control for Your Claude Code Fleet">
   <meta property="og:description" content="Agent orchestration meets cozy gaming. $3.99, one time, local only.">
-  <meta property="og:url" content="https://mtferg.github.io/claw_command_site/">
+  <meta property="og:url" content="https://clawcommand.space/">
   <!-- TODO: add og.png (1200x630, a real fleet screenshot with an amber robot waving) then uncomment:
-  <meta property="og:image" content="https://mtferg.github.io/claw_command_site/og.png">
+  <meta property="og:image" content="https://clawcommand.space/og.png">
   <meta name="twitter:card" content="summary_large_image">
   -->
 
@@ -128,11 +128,20 @@
     </div>
   </section>
 
+  <section class="roster-section" aria-label="One robot design per Claude model">
+    <div class="wrap roster">
+      <div class="roster-figure"><canvas class="rc" data-ch="fable"></canvas><p class="roster-label fable">FABLE</p></div>
+      <div class="roster-figure"><canvas class="rc" data-ch="opus"></canvas><p class="roster-label opus">OPUS</p></div>
+      <div class="roster-figure"><canvas class="rc" data-ch="sonnet"></canvas><p class="roster-label sonnet">SONNET</p></div>
+      <div class="roster-figure"><canvas class="rc" data-ch="haiku"></canvas><p class="roster-label haiku">HAIKU</p></div>
+    </div>
+  </section>
+
   <section id="planets" class="section">
     <div class="wrap">
       <p class="kicker">Grouping</p>
-      <h2>Group agents into planets.</h2>
-      <p class="section-copy">Easily group your agents however makes the most sense to you. Every agent carries a live status and a design corresponding to the specific model.</p>
+      <h2>Group agents around planets.</h2>
+      <p class="section-copy">Easily group your agents however makes sense to you. Create any number of planets with visual customization and simple drag+drop grouping. Each agent carries its live status and a design that corresponds to its running model.</p>
       <div class="pane">
         <canvas id="orbits-canvas"></canvas>
         <div class="chips">
@@ -148,7 +157,7 @@
     <div class="wrap">
       <p class="kicker kicker-amber">Agent status</p>
       <h2>Know exactly what needs your attention.</h2>
-      <p class="section-copy">Simple and fun animation cues for every session status. See at a glance who needs you and jump straight there with keyboard shortcuts.</p>
+      <p class="section-copy">Simple animation cues for every agent status. See at a glance who needs you and jump straight there with keyboard shortcuts.</p>
       <div class="cards">
         <div class="card">
           <canvas id="card-running"></canvas>
@@ -234,7 +243,6 @@
         <p class="kicker">Triage</p>
         <h2>Your command deck for everything you need.</h2>
         <p class="section-copy">The command deck is the whole fleet in depth: status, time waiting, token usage, cost, and the full transcript for every agent. Grouped by state with needs input pinned to the top, sortable by waiting time, cost, or title, filterable by text, chassis, and planet.</p>
-        <p class="section-copy">The wait clock turns amber past thirty seconds, because half a minute of a human bottleneck is long enough to notice.</p>
       </div>
       <div class="pane deck">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -317,7 +325,7 @@
       <div class="local-grid">
         <div class="local-card">
           <h3>Your sessions</h3>
-          <p>Reads the transcripts Claude Code already writes to <span class="path">~/.claude</span>, every five seconds. Configure your agent location and which sessions you'd like to see: last 24 hours, 3 days, 1 week, or 30 days.</p>
+          <p>Reads the local transcripts Claude Code already writes to <span class="path">~/.claude</span>, every five seconds. Configure your agent location and which sessions you'd like to see: last 24 hours, 3 days, 1 week, or 30 days.</p>
         </div>
         <div class="local-card">
           <h3>No account</h3>
@@ -371,6 +379,7 @@
     <div class="wrap">
       <span class="footer-brand">CLAW COMMAND</span>
       <span>built for people who run too many agents at once</span>
+      <span class="footer-links"><a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="mailto:support@clawcommand.space">Support</a></span>
       <span class="footer-dots">
         <i class="dot-green dot"></i>
         <i class="dot-amber dot"></i>
@@ -380,6 +389,7 @@
         <i class="dot-red dot"></i>
       </span>
     </div>
+    <p class="footer-legal">Claw Command is an independent product, not affiliated with or endorsed by Anthropic. Claude and Claude Code are trademarks of Anthropic, PBC.</p>
   </footer>
 
   <script src="./assets/claw-demo.js" defer></script>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Claw Command</title>
+  <meta name="description" content="Claw Command's privacy policy. The short version: the app collects nothing and your data stays on your machine.">
+  <link rel="canonical" href="https://clawcommand.space/privacy.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-brand"><a href="./" style="color:inherit">CLAW COMMAND</a><span class="nav-tag">v1</span></div>
+    <div class="nav-links">
+      <a class="nav-link" href="./#faq">FAQ</a>
+      <a class="nav-cta" href="./#pricing">Get it · $3.99</a>
+    </div>
+  </nav>
+
+  <main class="legal wrap">
+    <p class="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="legal-meta">Effective August 23, 2026 · <a href="./terms.html">Terms of Service</a></p>
+
+    <h2>The short version</h2>
+    <p>
+      Claw Command runs entirely on your Mac. It has no accounts, no analytics, no tracking,
+      and no server of ours that ever sees your data. Your Claude Code sessions — the code,
+      prompts, and transcripts in them — never leave your machine.
+    </p>
+
+    <h2>What the app reads and writes</h2>
+    <p>
+      The app reads the session files Claude Code already writes to <code>~/.claude</code>
+      on your machine (or another folder you point it at), so it can draw your fleet. That
+      reading happens locally, inside one process on your Mac. Nothing from those files —
+      no transcripts, no file paths, no project names, no token counts — is ever transmitted
+      anywhere.
+    </p>
+    <p>
+      The app writes one thing: its own local settings file (your planet layout, archived
+      robots, and preferences). It never modifies your Claude Code data or your code.
+    </p>
+
+    <h2>The one network request the app makes</h2>
+    <p>
+      Once a day, the app checks for updates by fetching a small version file from
+      <code>clawcommand.space</code>. That request carries no account, no identifier, and
+      nothing about your sessions — it is an ordinary HTTPS request for a static file. Like
+      any web request, the server host (GitHub Pages) can see your IP address in its
+      standard logs; see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub's privacy statement</a>.
+      That is the app's only network activity.
+    </p>
+
+    <h2>This website</h2>
+    <p>
+      This site is static and served by GitHub Pages. We run no analytics and set no
+      cookies. The site loads one font from Google Fonts, which means your browser makes a
+      request to Google's servers; see
+      <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.
+    </p>
+
+    <h2>Purchases</h2>
+    <p>
+      Payments are handled by our payment processor, <span class="ph">[PAYMENT PROCESSOR]</span>,
+      who acts as the merchant of record. They collect what a checkout needs (email, payment
+      details) under their own privacy policy; we never see your payment details. We receive
+      your email address only as part of the order record, and use it only for the purchase
+      itself — the download link, receipts, and refunds. No marketing email unless you opt in.
+    </p>
+
+    <h2>Your data</h2>
+    <p>
+      Because the app collects nothing, there is nothing for us to export, correct, or
+      delete — everything it knows lives in files on your machine, and deleting the app's
+      local settings file removes all of it. For order records, contact us or the payment
+      processor.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy changes — for instance, if a future version adds an opt-in feature that
+      talks to a server — we will update this page and note the change in the release notes
+      of the version that introduces it.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      <a href="mailto:support@clawcommand.space">support@clawcommand.space</a>
+    </p>
+
+    <p class="legal-disclaimer">
+      Claw Command is an independent product, not affiliated with or endorsed by Anthropic.
+      Claude and Claude Code are trademarks of Anthropic, PBC.
+    </p>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span class="footer-brand">CLAW COMMAND</span>
+      <span class="footer-links"><a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="mailto:support@clawcommand.space">Support</a></span>
+      <span class="footer-dots">
+        <i class="dot-green dot"></i>
+        <i class="dot-amber dot"></i>
+        <i class="dot-idle dot"></i>
+        <i class="dot-blue dot"></i>
+        <i class="dot-grey dot"></i>
+        <i class="dot-red dot"></i>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
